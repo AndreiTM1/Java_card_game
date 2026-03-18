@@ -109,7 +109,16 @@ public class Makao {
         handPanel.setLayout(new GridLayout(numRows, Math.min(hand.size(), 6), 10, 10));
 
         for (Carte carte : hand) {
-            JButton cardButton = new JButton(carte.toString());
+            // Verificăm dacă este rândul jucătorului care deține aceste cărți
+            String textButon;
+            if (currentPlayer == player) {
+                textButon = carte.toString(); // Se vede cartea
+            } else {
+                textButon = "..."; // Se ascunde cartea
+            }
+
+            JButton cardButton = new JButton(textButon);
+
             cardButton.addActionListener(e -> {
                 if (currentPlayer == player) {
                     playCard(carte, player);
@@ -117,6 +126,10 @@ public class Makao {
                     JOptionPane.showMessageDialog(frame, "Nu este rândul Jucătorului " + player + "!");
                 }
             });
+
+            // Dezactivăm butonul vizual dacă nu e rândul lui (opțional, deja ai logică în updateButtonStates)
+            cardButton.setEnabled(currentPlayer == player);
+
             handPanel.add(cardButton);
         }
 
@@ -203,6 +216,8 @@ public class Makao {
     private void switchPlayer() {
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
         turnLabel.setText("Este rândul Jucătorului " + currentPlayer);
+        updateHandPanel(player1HandPanel, player1Hand, 1);
+        updateHandPanel(player2HandPanel, player2Hand, 2);
         updateButtonStates();
     }
 
