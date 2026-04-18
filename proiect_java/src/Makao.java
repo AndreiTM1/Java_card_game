@@ -127,7 +127,6 @@ public class Makao {
                 }
             });
 
-            // Dezactivăm butonul vizual dacă nu e rândul lui (opțional, deja ai logică în updateButtonStates)
             cardButton.setEnabled(currentPlayer == player);
 
             handPanel.add(cardButton);
@@ -223,7 +222,8 @@ public class Makao {
 
     private boolean isSpecialCard(Carte carte) {
         String rank = carte.getRank();
-        return rank.equals("2") || rank.equals("3") || rank.equals("4") || rank.equals("K") || rank.equals("As") || rank.equals("Joker");
+        return rank.equals("2") || rank.equals("3") || rank.equals("4") || rank.equals("K")
+                || rank.equals("As") || rank.equals("Joker");
     }
 
     private boolean isValidMove(Carte carte) {
@@ -266,13 +266,15 @@ public class Makao {
         switch (rank) {
             case "2":
                 cardsToDraw += 2;
-                JOptionPane.showMessageDialog(frame, "Următorul jucător trebuie să ia " + cardsToDraw + " cărți!");
+                JOptionPane.showMessageDialog(frame, "Următorul jucător trebuie să ia " +
+                        cardsToDraw + " cărți!");
                 switchPlayer();
                 break;
 
             case "3":
                 cardsToDraw += 3;
-                JOptionPane.showMessageDialog(frame, "Următorul jucător trebuie să ia " + cardsToDraw + " cărți!");
+                JOptionPane.showMessageDialog(frame, "Următorul jucător trebuie să ia " +
+                        cardsToDraw + " cărți!");
                 switchPlayer();
                 break;
 
@@ -280,11 +282,13 @@ public class Makao {
             case "Joker":
                 if (suit.equals("Joker Negru")) {
                     cardsToDraw += 5;
-                    JOptionPane.showMessageDialog(frame, "Următorul jucător trebuie să ia " + cardsToDraw + " cărți!");
+                    JOptionPane.showMessageDialog(frame, "Următorul jucător trebuie să ia "
+                            + cardsToDraw + " cărți!");
                     switchPlayer();
                 } else if (suit.equals("Joker Rosu")) {
                     cardsToDraw += 10;
-                    JOptionPane.showMessageDialog(frame, "Următorul jucător trebuie să ia " + cardsToDraw + " cărți!");
+                    JOptionPane.showMessageDialog(frame, "Următorul jucător trebuie să ia " +
+                            cardsToDraw + " cărți!");
                     switchPlayer();
                 }
                 break;
@@ -325,7 +329,8 @@ public class Makao {
             case "4":
 
                 if (cardsToDraw > 0) {
-                    JOptionPane.showMessageDialog(frame, "Penalizarea de a lua " + cardsToDraw + " cărți a fost anulată!");
+                    JOptionPane.showMessageDialog(frame, "Penalizarea de a lua "
+                            + cardsToDraw + " cărți a fost anulată!");
                     cardsToDraw = 0;
 
                 }

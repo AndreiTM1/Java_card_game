@@ -34,7 +34,7 @@ public class Razboi {
 
         frame = new JFrame("Razboi!");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
+        frame.setSize(400, 200);
         frame.setLayout(new BorderLayout());
 
 
@@ -92,7 +92,8 @@ public class Razboi {
         } else {
             int value = getCardValue(player1Card);
             if (player1Deck.size() < value || player2Deck.size() < value) {
-                String winner = player1Deck.size() < value ? "Jucatorul 2 castiga meciul!" : "Jucatorul 1 castiga meciul!";
+                String winner = player1Deck.size() < value ? "Jucatorul 2 castiga meciul!" :
+                        "Jucatorul 1 castiga meciul!";
                 resultLabel.setText(winner);
                 playButton.setEnabled(false);
                 return;
